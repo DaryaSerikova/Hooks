@@ -1,5 +1,21 @@
 # App with Hooks
 
+## useState
+
+const [ value, setValue ] = useState('initial value');
+#### `value` 
+It is state.
+#### `setValue`
+It is setState for only one property or many property, but as one whole.
+
+## useContext
+
+## useEffect
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
