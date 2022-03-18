@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 
 const App = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
   const [visible, setVisible] = useState(true);
 
   if (visible) {
@@ -12,8 +12,9 @@ const App = () => {
         <button
           onClick={() => setVisible(false)}>hide</button>
           {/* <ClassCounter value={value}/> */}
-          <Notification/>
+          {/* <Notification/> */}
           {/* <HookCounter value={value} /> */}
+          <PlanetInfo id={value}/>
       </div>
     );
   } else {
@@ -34,6 +35,27 @@ const Notification = () => {
       {visible && <p>Hello</p>}
     </div>
   );
+};
+
+const PlanetInfo = ({id}) => {
+  const [name, setName] = useState(null);
+
+  useEffect(() => {
+    console.log(name, id-1);
+    let cancelled = false;
+
+    fetch(`https://swapi.dev/api/planets/${id}/`)
+      .then(res => res.json())
+      .then(data => !cancelled && setName(data.name));
+    return () => cancelled = true; //clean
+  }, [id]);
+
+
+
+  
+    return (
+      <div>{id} - {name}</div>
+    );
 };
 
 const HookCounter = ({ value }) => {
