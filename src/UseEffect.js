@@ -37,7 +37,8 @@ const Notification = () => {
   );
 };
 
-const PlanetInfo = ({id}) => {
+const usePlanetInfo = ({id}) => {
+
   const [name, setName] = useState(null);
 
   useEffect(() => {
@@ -50,9 +51,13 @@ const PlanetInfo = ({id}) => {
     return () => cancelled = true; //clean
   }, [id]);
 
+  return name;
+};
 
+const PlanetInfo = ({ id }) => {
 
-  
+  const name = usePlanetInfo({id});
+
     return (
       <div>{id} - {name}</div>
     );
